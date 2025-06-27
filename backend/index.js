@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cors({
-    origin: "https://ai-chatbot-1-wyb4.onrender.com/",
+    origin: "https://ai-chatbot-1-wyb4.onrender.com",
     credentials: true,
   })
 );
