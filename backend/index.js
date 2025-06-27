@@ -9,6 +9,7 @@ const cors = require("cors");
 const User = require("./models/User");
 const authRoutes = require("./api/authRoutes");
 const chatRoutes = require("./api/chatRoutes");
+const MongoStore = require("connect-mongo");
 
 mongoose
   .connect(process.env.MONGODB_URL)
@@ -33,6 +34,9 @@ let configSession = {
   secret: "keyboard cat",
   resave: false,
   saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGO_URL,
+  }),
   cookie: {
     httpOnly: true,
     sameSite: "none",
