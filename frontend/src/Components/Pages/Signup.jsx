@@ -11,7 +11,7 @@ function Signup() {
   async function handleSubmit(e) {
     e.preventDefault();
     let res = await axios.post(
-      "http://localhost:8080/signup",
+      "https://ai-chatbot-7cri.onrender.com/signup",
       {
         email: emailInp.current.value,
         username: usernameInp.current.value,

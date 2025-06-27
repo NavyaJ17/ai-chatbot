@@ -38,16 +38,19 @@ router.get("/chat/:id", isLoggedIn, async (req, res) => {
 router.patch("/chat/:id", isLoggedIn, async (req, res) => {
   try {
     const { prompt } = req.body;
-    console.log(prompt);
     const { text, path } = prompt;
     const { id } = req.params;
     const chat = await Chat.findById(id);
     const chatHistory = chat.history;
-    console.log(chatHistory);
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({
       model: "gemini-1.5-flash",
       systemInstruction: chat.systemInstruction,
+      tools: [
+        {
+          codeExecution: {},
+        },
+      ],
     });
     if (path !== undefined) {
       const fileManager = new GoogleAIFileManager(process.env.GEMINI_API_KEY);
@@ -63,7 +66,6 @@ router.patch("/chat/:id", isLoggedIn, async (req, res) => {
     }
     const chatSession = model.startChat({ history: chatHistory });
     const result = await chatSession.sendMessage(text);
-    console.log(result.text());
     chat.history = chatHistory;
     const updatedChat = await chat.save();
 

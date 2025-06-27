@@ -6,25 +6,35 @@ import axios from "axios";
 const ProcessedText = ({ text }) => {
   function processText(text) {
     let formattedText = text.replace(/\n/g, "<br>");
-    const codeReplaced = formattedText.replace(
-      /```([^*]+)```/g,
+    const spaceReplaced = formattedText.replace(/ /g, "&nbsp;");
+    const codeReplaced = spaceReplaced.replace(
+      /```([^`]+)```/g,
       "<pre className='code'>$1</pre>"
     );
     const symbolReplaced = codeReplaced.replace(
-      /(?!\*)`(?!\*)([^*]+)(?!\*)`(?!\*)/g,
+      /`([^`]+)`/g,
       "<code>$1</code>"
     );
     const strongReplaced = symbolReplaced.replace(
       /\*\*([^*]+)\*\*/g,
       "<strong>$1</strong>"
     );
+    // const emReplaced = strongReplaced.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+    const liReplaced = strongReplaced.replace(
+      /\*&nbsp;([^<]+)/g,
+      "<li>$1</li>"
+    );
 
-    const liReplaced = strongReplaced.replace(/\*([^*]+)/g, "<li>$1</li>");
     return liReplaced;
   }
   const processedText = processText(text);
 
-  return <div dangerouslySetInnerHTML={{ __html: processedText }} />;
+  return (
+    <p
+      className="inside-text"
+      dangerouslySetInnerHTML={{ __html: processedText }}
+    />
+  );
 };
 
 function Chat() {
@@ -36,7 +46,7 @@ function Chat() {
     try {
       console.log(input.current.value);
       const res = await axios.patch(
-        `http://localhost:8080/chat/${chatId}`,
+        `https://ai-chatbot-7cri.onrender.com/chat/${chatId}`,
         { prompt: { text: input.current.value } },
         { withCredentials: true }
       );
@@ -50,9 +60,12 @@ function Chat() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get(`http://localhost:8080/chat/${chatId}`, {
-          withCredentials: true,
-        });
+        const res = await axios.get(
+          `/https://ai-chatbot-7cri.onrender.com/chat/${chatId}`,
+          {
+            withCredentials: true,
+          }
+        );
         console.log("Get response:", res.data);
         setChat(res.data.history || []);
       } catch (error) {
