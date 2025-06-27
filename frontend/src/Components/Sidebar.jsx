@@ -18,18 +18,9 @@ function Sidebar() {
   useEffect(() => {
     async function fetchData() {
       try {
-<<<<<<< HEAD
-        const res = await axios.get(
-          `https://ai-chatbot-7cri.onrender.com/${params.id}`,
-          {
-            withCredentials: true,
-          }
-        );
-=======
         const res = await axios.get(`http://localhost:8080/${params.id}`, {
           withCredentials: true,
         });
->>>>>>> fresh-start
         setUser(res.data);
       } catch (error) {
         console.error("Error fetching user data:", error);

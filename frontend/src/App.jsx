@@ -15,10 +15,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route element={<PrivateRoute />}> */}
         <Route path="/:id/chat/new" element={<NewChat />} />
         <Route path="/:id/chat/:chatId" element={<Chat />} />
-        {/* </Route> */}
       </Routes>
     </div>
   );

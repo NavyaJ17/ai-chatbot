@@ -9,11 +9,7 @@ function NewChat() {
   let navigate = useNavigate();
   async function handleClick() {
     let res = await axios.post(
-<<<<<<< HEAD
-      "https://ai-chatbot-7cri.onrender.com/chat/new",
-=======
       "http://localhost:8080/chat/new",
->>>>>>> fresh-start
       {
         systemInstruction: input.current.value,
       },

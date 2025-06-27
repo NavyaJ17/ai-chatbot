@@ -11,11 +11,7 @@ function Login() {
   async function handleSubmit(e) {
     e.preventDefault();
     let res = await axios.post(
-<<<<<<< HEAD
-      "https://ai-chatbot-7cri.onrender.com/login",
-=======
       "http://localhost:8080/login",
->>>>>>> fresh-start
       {
         username: usernameInp.current.value,
         password: passInp.current.value,
