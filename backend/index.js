@@ -35,7 +35,7 @@ let configSession = {
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({
-    mongoUrl: process.env.MONGO_URL,
+    mongoUrl: process.env.MONGODB_URL,
   }),
   cookie: {
     httpOnly: true,
