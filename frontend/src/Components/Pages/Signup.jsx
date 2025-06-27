@@ -11,7 +11,11 @@ function Signup() {
   async function handleSubmit(e) {
     e.preventDefault();
     let res = await axios.post(
+<<<<<<< HEAD
       "https://ai-chatbot-7cri.onrender.com/signup",
+=======
+      "http://localhost:8080/signup",
+>>>>>>> fresh-start
       {
         email: emailInp.current.value,
         username: usernameInp.current.value,

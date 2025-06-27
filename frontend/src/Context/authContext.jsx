@@ -17,7 +17,11 @@ export const AuthProvider = ({ children }) => {
 
   const fetchData = async () => {
     try {
+<<<<<<< HEAD
       let res = await axios.get("https://ai-chatbot-7cri.onrender.com/user", {
+=======
+      let res = await axios.get("http://localhost:8080/user", {
+>>>>>>> fresh-start
         withCredentials: true,
       });
       console.log("Fetched user data:", res.data);

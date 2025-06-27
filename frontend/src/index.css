@@ -270,7 +270,10 @@ form span:hover {
   flex-direction: column;
   gap: 2rem;
   flex-grow: 1;
+<<<<<<< HEAD
   /* width: inherit; */
+=======
+>>>>>>> fresh-start
 }
 
 .chat-container {
@@ -281,7 +284,10 @@ form span:hover {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+<<<<<<< HEAD
   /* width: inherit; */
+=======
+>>>>>>> fresh-start
 }
 
 .new-chat {
@@ -321,8 +327,11 @@ form span:hover {
   padding-left: 0.5rem;
   font-size: 1rem;
   line-height: 1.5rem;
+<<<<<<< HEAD
   /* display: flex; */
   /* width: min-content; */
+=======
+>>>>>>> fresh-start
 }
 
 .selected {

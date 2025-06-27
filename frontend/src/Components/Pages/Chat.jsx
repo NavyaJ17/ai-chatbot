@@ -19,7 +19,11 @@ const ProcessedText = ({ text }) => {
       /\*\*([^*]+)\*\*/g,
       "<strong>$1</strong>"
     );
+<<<<<<< HEAD
     // const emReplaced = strongReplaced.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+=======
+
+>>>>>>> fresh-start
     const liReplaced = strongReplaced.replace(
       /\*&nbsp;([^<]+)/g,
       "<li>$1</li>"
@@ -46,7 +50,11 @@ function Chat() {
     try {
       console.log(input.current.value);
       const res = await axios.patch(
+<<<<<<< HEAD
         `https://ai-chatbot-7cri.onrender.com/chat/${chatId}`,
+=======
+        `http://localhost:8080/chat/${chatId}`,
+>>>>>>> fresh-start
         { prompt: { text: input.current.value } },
         { withCredentials: true }
       );
@@ -60,12 +68,18 @@ function Chat() {
   useEffect(() => {
     async function fetchData() {
       try {
+<<<<<<< HEAD
         const res = await axios.get(
           `/https://ai-chatbot-7cri.onrender.com/chat/${chatId}`,
           {
             withCredentials: true,
           }
         );
+=======
+        const res = await axios.get(`http://localhost:8080/chat/${chatId}`, {
+          withCredentials: true,
+        });
+>>>>>>> fresh-start
         console.log("Get response:", res.data);
         setChat(res.data.history || []);
       } catch (error) {
